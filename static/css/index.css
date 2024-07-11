@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+:root{
+    --var-font:"Cairo", sans-serif;
+}
+
+img.bg {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+.container {
+    width: 900px;
+    height: 500px;
+    backdrop-filter: blur(60px);
+    background-color: #ffffff10;
+    border-radius: 30px;
+    padding: 2rem 1.9rem;
+    overflow-y: auto;
+}
+
+.container .up {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.up h1 {
+    font-family: var(--var-font);
+    font-size: 25px;
+    color: #fff;
+}
+
+.container .left {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+    align-items: center;
+}
+
+.container .left select {
+    padding: 6px 12px;
+    direction: rtl;
+    font-family: var(--var-font);
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: #ffffff20;
+    color: #fff;
+}
+
+.container .left select option {
+    background-color: #00000010;
+    color: #999;
+}
+
+.container .left a {
+    font-family: var(--var-font);
+    font-size: 13px;
+    text-decoration: none;
+    background-color: #00AB4A;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;  
+}
+
+.box-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    border-top: 2px solid #999;
+    padding: 1rem;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    font-family: var(--var-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background-color: #ffffff20;
+}
+
+.box p {
+    color: #fff;
+    direction: rtl;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+.box .notyet {
+    color: crimson;
+}
+
+.box .ok {
+    color: #12f173;
+}
+
+.box a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#31CEFF;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    text-decoration: none;
+}

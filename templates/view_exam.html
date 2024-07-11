@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Name Based Here</title>
+    <link rel="stylesheet" href="{% static 'css/view_exam.css' %}">
+</head>
+<body>
+    
+    <img src="{% static 'images/bg.png' %}" alt="" class="bg">
+
+    <div class="container">
+        <h1>{{exam_name}}</h1>
+        <div class="info">
+            <p>جميع السكاشن : {{total_sections}}</p>
+            <p>تم الانتهاء : {{is_done_sections}}</p>
+            <p>متبقي : {{pending}}</p>
+        </div>
+        <div class="list-section">
+            
+            {% for section in sections %}
+                <div class="section">
+                    <p>سكشن {{section.number}}</p>
+                    {% if not c_user %}
+                        {% if section.state == 'done' %}
+                            <p class="done">تم</p>
+                            {% endif %}
+                            
+                            {% if section.state == 'pending' %}
+                            <p class="waiting">في الانتظار</p>
+                            {% endif %}
+                            
+                            
+                            {% if section.state == 'not_enter' %}
+                            <p class="notenter">لم يدخل بعد</p>
+                            {% endif %}
+                    {% else %}
+                    
+
+                            {% if section.state == 'not_enter' %}
+                                <a/ href="?enter={{section.id}}">السماح بالدخول</a>
+                            {% endif %}
+
+                            {% if section.state == 'done' %}
+                            <p class="done">تم</p>
+                            {% endif %}
+
+                            {% if section.state == 'pending' %}
+                            <a/ href="?done={{section.id}}">الانتهاء</a>
+                            {% endif %}
+
+
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <!-- <div class="section">
+                <p>سكشن 1</p>
+                <p class="waiting">في الانتظار</p>
+            </div>
+            <div class="section">
+                <p>سكشن 1</p>
+                <p class="noten">لم يدخل بعد</p>
+            </div> -->
+
+        </div>
+    </div>
+
+</body>
+</html>

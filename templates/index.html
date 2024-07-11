@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <img src="{% static 'images/bg.png' %}" alt="" class="bg">
+    {% for msg in messages %}
+    <script>alert("{{msg}}")</script>
+{% endfor %}
+
+    <div class="container">
+        <div class="up">
+            <h1>جدول الاختبارات الشفوية</h1>
+            <form class="left" method="GET" action=".">
+                <select name="level" id="">
+                    {% if current_level == 'all' %}
+                        <option class="sel" value="" selected>جميع الفرق</option>
+                    {% else %}
+                        <option class="sel" value="">جميع الفرق</option>
+                    {% endif %}
+
+                    {% for level in levels %}
+                        {% if level.name == current_level %}
+                            <option class="sel"  value="{{level.name}}" selected>{{level.name}}</option>
+                        {% else %}
+                            <option class="sel"  value="{{level.name}}">{{level.name}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                {% if c_user %}
+                    <a href="{% url 'logout' %}" style="background-color: red;">تسجيل الخروج</a>
+                {% else %}
+                    <a href="{% url 'login' %}">تسجيل الدخول</a>
+                {% endif %}
+            </form>
+        </div>
+
+        <div class="box-list">
+        
+            {% for exam in exams %}
+                <div class="box">
+                    <p>الاختبار : {{exam.name}}</p>
+                    <p>التاريخ : {{exam.date}}</p>
+                    <p>الفرقة : {{exam.level}}</p>
+                    {% if exam.is_start %}
+                        <p>الحالة : <span class="ok">بدأ الامتحان</span></p>
+                        <a href="{% url 'exam' exam.id %}">الدخول</a>
+                    {% else %}
+                            <p>الحالة : <span class="notyet">لم يبدأ بعد</span></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        
+        </div>
+
+    </div>
+    
+
+    <script>
+
+        var form = document.querySelector('form');
+        var select = document.querySelector('select');
+
+        select.addEventListener('change', ()=>{
+            form.submit();
+        })
+    </script>
+</body>
+</html>

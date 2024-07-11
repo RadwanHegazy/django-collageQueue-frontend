@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    
+    {% for msg in messages %}
+        <script>alert("{{msg}}")</script>
+    {% endfor %}
+    <img src="{% static 'images/bg.png' %}" alt="" class="bg">
+    <form class="container" method="POST">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="البريد الالكتروني" >
+        <input type="password" name="password" placeholder="كلمة المرور">
+        <button type="submit">تسجيل الدخول</button>
+    </form>
+
+</body>
+</html>
